@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=League+Spartan:wght@700&display=swap');
+
+.theme1 {
+    /*Backgrunds*/
+    --colorBackground: hsl(222, 26%, 31%);
+    --toogleKeypadBackground: hsl(223, 31%, 20%);
+    --screenBackground: hsl(224, 36%, 15%);
+
+    /*keys*/
+    --keyBackground: hsl(225, 21%, 49%);
+    --keyShadow: hsl(224, 28%, 35%);
+    --toggleBackground: hsl(6, 63%, 50%);
+    --keyShadowDarkRed: hsl(6, 70%, 34%);
+    --keyBackground: hsl(30, 25%, 89%);
+    --keyShadowGrayishOrange: hsl(28, 16%, 65%);
+
+    /*Text*/
+    --veryDarkGrayishBlue: hsl(221, 14%, 31%);
+    --headerColorText: hsl(0, 0%, 100%);
+    --white: hsl(0, 0%, 100%);
+}
+
+.theme2 {
+    /*Backgrunds*/
+    --colorBackground: hsl(0, 0%, 90%);
+    --toogleKeypadBackground: hsl(0, 5%, 81%);
+    --screenBackground: hsl(0, 0%, 93%);
+
+    /*keys*/
+    --keyBackground: hsl(185, 42%, 37%);
+    --keyShadow: hsl(185, 58%, 25%);
+    --toggleBackground: hsl(25, 98%, 40%);
+    --keyShadowDarkRed: hsl(25, 99%, 27%);
+    --keyBackground: hsl(45, 7%, 89%);
+    --keyShadowGrayishOrange: hsl(35, 11%, 61%);
+
+    /*Text*/
+    --headerColorText: hsl(60, 10%, 19%);
+    --white: hsl(0, 0%, 100%);
+
+}
+
+.theme3 {
+    /*Backgrunds*/
+    --colorBackground: hsl(268, 75%, 9%);
+    --toogleKeypadBackground: hsl(268, 71%, 12%);
+    --screenBackground: hsl(268, 71%, 12%);
+
+    /*keys*/
+    --keyBackground: hsl(281, 89%, 26%);
+    --keyShadow: hsl(285, 91%, 52%);
+    --toggleBackground: hsl(176, 100%, 44%);
+    --keyShadowDarkRed: hsl(177, 92%, 70%);
+    --keyBackground: hsl(268, 47%, 21%);
+    --keyShadowGrayishOrange: hsl(290, 70%, 36%);
+
+    /*Text*/
+    --headerColorText: hsl(52, 100%, 62%);
+    --veryDarkBlue :hsl(198, 20%, 13%);
+    --white: hsl(0, 0%, 100%);
+
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 700;
+}
+
+body {
+    background-color: var(--colorBackground);
+}
+
+#root {
+    padding: 20px;
+}
+
+
+
+/* Header */
+
+.__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 20px;
+    color: var(--headerColorText);
+}
+
+.title h1{
+    font-size: 32px;
+}
+
+.__header .content__togle {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 13px;
+    align-items: flex-end
+}
+
+
+.container__toggle_switch{
+    justify-items: center;
+    display: grid;
+    place-items: center;
+    width: 80px;
+}
+
+.numberToggle {
+    align-items: center;
+    display: flex;
+    height: fit-content;
+    gap: 0 17px;
+    padding: 0 15px;
+    margin-bottom: 8px;
+}
+
+.numberToggle p {
+    margin: 0;
+}
+
+.title__theme{
+    object-fit: contain;
+    height: fit-content;
+}
+.title__theme  p{
+    margin: 0;
+}
+
+.__header .__toggle {
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 50px;
+    object-fit: contain;
+    height: fit-content;
+    padding: 5px 0;
+    gap:  0 8px;
+    background-color: var(--toogleKeypadBackground);
+}
+
+.__header .__toggle input {
+    appearance: none;
+    margin: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    background-color: var(--toggleBackground);
+    opacity: 0;
+}
+
+.__header .__toggle input:hover {
+    cursor: pointer;
+}
+
+
