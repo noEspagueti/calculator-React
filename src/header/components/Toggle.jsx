@@ -9,7 +9,6 @@ export const Toggle = memo(({ item, array = []}) => {
             document.getElementById(value).style.opacity = "1";
             localStorage.setItem('theme', value);
             if (value !== item) {
-                console.log(value);
                 document.getElementById(value).style.opacity = "0";
             }
         });

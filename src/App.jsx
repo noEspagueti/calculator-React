@@ -6,8 +6,8 @@ export const App = () => {
     return (
         <main className='__container'>
             <Header />
-            {/* <Screen />
-            <Board /> */}
+            <Screen />
+            {/* <Board /> */}
         </main>
     );
 };

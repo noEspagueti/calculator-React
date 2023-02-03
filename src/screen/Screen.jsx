@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Input } from './components/Input';
 
 export const Screen = () => {
   return (
-    <div>Screen</div>
-  )
-}
+    <section className='__screen'>
+      <Input />
+    </section>
+  );
+};
