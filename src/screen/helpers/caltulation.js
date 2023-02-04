@@ -3,9 +3,9 @@
 *  GitHub: https://github.com/noEspagueti
 *
 
-*  ===========================
-*  |Notación infija a postfija| 
-*  ===========================
+*  ==============================
+*  | Notación infija a postfija | 
+*  ==============================
 *
 *  INTRODUCCIÓN
 *  Para la funcionalidad de esta aplicación, es necesario expresar los valores de entradas en operaciones aritméticas
