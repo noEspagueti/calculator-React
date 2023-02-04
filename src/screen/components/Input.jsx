@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { Board } from '../Board'
-import { exprePostFija } from '../helpers/caltulation';
+import { calculateExpretion } from '../helpers/calculate';
 
 export const Input = () => {
 
     const [input, setinput] = useState([]);
+
     const onChangeInput = (event) => {
         setinput(event.target.value);
     };
+
     const captureBoard = (item) => {
-        "DEL" === item ? setinput(input.slice(0, -1)) : "RESET" === item ? setinput([]) : "=" === item ? setinput(input.slice(0, input.length)) : setinput([...input, item]);
-
-        if(item === "="){
-            let pos = new exprePostFija();
-            let value = pos.convertToPostFija(input.join(""));
-            let expretion = pos.evaluate(value);
-            setinput([expretion]);
+        "DEL" === item ? setinput(input.slice(0, -1)) 
+        : "RESET" === item ? setinput([]) 
+        : "=" === item ? setinput(input.slice(0, input.length)) 
+        : setinput([...input, item]);
+        
+        if (item === "=") {
+            console.log(input);
+            let result = calculateExpretion(input);
+            setinput([result])
         }
-
-    }
+    };
 
     return (
         <>
