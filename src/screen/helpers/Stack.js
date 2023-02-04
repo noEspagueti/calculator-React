@@ -2,14 +2,13 @@
  * Autor: Miguel Angelo Silva Gómez 
  */
 
-export let Stack = function () {
+export const Stack = function () {
     let pointer = -1; // pila vacia
     let sizeStack = 20;
     let list = [];
 
     this.emptyList = function () {
-        if (pointer === -1) return true;
-        else return false;
+        return pointer === -1 ? true : false;
     };
 
     this.fullStack = function () {
@@ -39,7 +38,12 @@ export let Stack = function () {
 
     this.showStackSize = function () {
         return pointer + 1;
+    };
+
+    this.topElement = function(){
+        return list[pointer];
     }
 };
+
 
 

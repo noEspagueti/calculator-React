@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-// import { calculateOperations } from '../helpers/caltulation';
-// import { lista } from '../helpers/caltulation';
+import { exprePostFija } from '../helpers/caltulation';
 
 export const Input = () => {
     const [input, setinput] = useState("");
@@ -15,16 +14,19 @@ export const Input = () => {
     const calculation = (e) => {
         if (e.key !== "Enter") return
         inputRef.current.focus();
+        let pos = new exprePostFija();
+        let postFija = pos.convertToPostFija(input);
+        let value = pos.evaluate(postFija);
+        setinput(value);
     }
-    
-    console.log(input);
+
 
     useEffect(() => {
         document.addEventListener('keydown', calculation)
         return () => {
             document.removeEventListener('keydown', calculation);
         }
-    }, [])
+    }, [input])
 
 
     return (
