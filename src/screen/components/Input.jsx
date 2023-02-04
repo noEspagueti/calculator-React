@@ -3,7 +3,7 @@ import { Board } from '../Board'
 import { exprePostFija } from '../helpers/caltulation';
 
 export const Input = () => {
-    
+
     const [input, setinput] = useState([]);
     const onChangeInput = (event) => {
         setinput(event.target.value);

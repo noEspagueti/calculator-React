@@ -21,8 +21,7 @@
 
 import { Stack } from './Stack.js';
 
-
-export const exprePostFija = function () {
+export  const exprePostFija = function () {
 
     const OPERATORS_PRIORITY = [
         { op: "^", valueOutStack: 4, valueInStack: 3 },
@@ -31,7 +30,8 @@ export const exprePostFija = function () {
         { op: "+", valueOutStack: 1, valueInStack: 1 },
         { op: "-", valueOutStack: 1, valueInStack: 1 },
         { op: "(", valueOutStack: 5, valueInStack: 0 },
-        { op: ")", valueOutStack: -1, valueInStack: -1 }
+        { op: ")", valueOutStack: -1, valueInStack: -1 },
+        { op: undefined, valueOutStack: 0, valueInStack: 0 }
     ];
 
 
@@ -53,6 +53,9 @@ export const exprePostFija = function () {
         return newStack.topElement();
     };
 
+    //1-2^3^3-(4+5x6)x7					
+    //exp --> 1233
+    //pila --> - ^ ^ 
     this.convertToPostFija = function (infija) {
         let postFija = "";
         let stack = new Stack();
@@ -63,18 +66,23 @@ export const exprePostFija = function () {
                 if (stack.emptyList()) {
                     stack.push(temp);
                 } else {
-                    let priorityOutStack = this.priorityOutStack(temp);
-                    let priorityInStack = this.priorityInStack(stack.topElement());
+                    let priorityOutStack = this.priorityOutStack(temp); //1
+                    let priorityInStack = this.priorityInStack(stack.topElement()); //4
                     if (priorityOutStack > priorityInStack) {
                         stack.push(temp);
                     } else {
-                        if (temp === ')') {
-                            while (stack.topElement() !== '(') {
+                        if (temp === ")") {
+                            while (stack.topElement() !== "(") {
                                 postFija += stack.pop();
                             }
                             stack.pop();
                         } else {
-                            postFija += stack.pop();
+                            while (this.priorityInStack(stack.topElement()) >= this.priorityOutStack(temp)) {
+                                if (stack.topElement() !== undefined && stack.topElement() !== null) {
+                                    postFija += stack.pop();
+                                } else {
+                                }
+                            }
                             stack.push(temp);
                         }
                     }
@@ -88,14 +96,15 @@ export const exprePostFija = function () {
             postFija += stack.pop();
         }
 
-        return postFija.replace("(", "").replace(")", "");
+        return postFija;
     };
 
 
 
 
     this.isOperator = function (operator) {
-        return ["x", "^", "+", "-", "/" + "(" + ")"].includes(operator);
+        return ["x", "^", "+", "-", "/"].includes(operator) || operator === "(" || operator === ")";
+
     };
 
     this.priorityOutStack = function (operator) {
@@ -109,14 +118,11 @@ export const exprePostFija = function () {
     };
 
     this.operation = function (operator, operand1, operand2) {
-        if (operator === "x") { return operand1 * operand2 };
-        if (operator === "/") { return operand1 / operand2 };
-        if (operator === "^") { return Math.pow(operand1, operand2) };
-        if (operator === "+") { return operand1 + operand2 };
-        if (operator === "-") { return operand1 - operand2 };
+        return operator === "x" ? operand1 * operand2 :
+            operator === "/" ? operand1 / operand2
+                : operator === "^" ? Math.pow(operand1, operand2)
+                    : operator === "+" ? operand1 + operand2 : operator === "-" ? operand1 - operand2
+                        : "error";
     };
 
 };
-
-
-
