@@ -11,11 +11,11 @@ export const Input = () => {
     };
 
     const captureBoard = (item) => {
-        "DEL" === item ? setinput(input.slice(0, -1)) 
-        : "RESET" === item ? setinput([]) 
-        : "=" === item ? setinput(input.slice(0, input.length)) 
-        : setinput([...input, item]);
-        
+        "DEL" === item ? setinput(input.slice(0, -1))
+            : "RESET" === item ? setinput([])
+                : "=" === item ? setinput(input.slice(0, input.length))
+                    : setinput([...input, item]);
+
         if (item === "=") {
             console.log(input);
             let result = calculateExpretion(input);
@@ -27,12 +27,16 @@ export const Input = () => {
         <>
             <section className='__screen'>
                 <section className='input__screen'>
-                    <input
+                    {/* <input
                         className='inputScreen'
                         type="text"
                         value={input.join("")}
                         onChange={onChangeInput}
-                    />
+                    /> */}
+                    <p>{
+                        input.join("")
+                    
+                    }</p>
                 </section>
             </section>
             <Board calculation={captureBoard} />
